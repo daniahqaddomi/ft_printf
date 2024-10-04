@@ -61,3 +61,18 @@ int ft_printf(const char *string, ...)
     va_end(args);
     return(len);      
 }
+
+#include "ft_printf.h"
+
+int	printf_char(int c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
+#include "ft_printf.h"
+
+int	print_char(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
