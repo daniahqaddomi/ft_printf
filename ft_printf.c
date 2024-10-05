@@ -75,3 +75,30 @@ int	print_char(char c)
 	ft_putchar_fd(c, 1);
 	return (1);
 }
+void ft_putstr(char *str)
+{
+    if (str == NULL) // Check for NULL
+        return; // Or handle accordingly, e.g., write a default message.
+    int i = 0;
+    while (str[i])
+    {
+        write(1, &str[i], 1);
+        i++;
+    }
+}
+
+int ft_printstr(char *str)
+{
+    if (str == NULL)
+    {
+        ft_putstr("(null)");
+        return (6); // Returning the length of "(null)"
+    }
+    int i = 0;
+    while (str[i])
+    {
+        write(1, &str[i], 1);
+        i++;
+    }
+    return (i); // Return the length of the string
+}
