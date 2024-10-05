@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <string.h>
+#include "ft_printf.h"
 
 static void ft_printfcheck(char c, va_list *args, int *len, int *i)
 {
