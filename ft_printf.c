@@ -34,31 +34,31 @@ static void ft_printfcheck(char c, va_list *args, int *len, int *i)
        (*i)--;      
 }
 
-int ft_printf(const char *string, ...)
+int	ft_printf(const char *string, ...)
 {
-    va_list   args;
-    int       i;
-    int       len;
+	va_list	args;
+	int		i;
+	int		length;
 
-    i = 0;
-    len = 0;
-    va_start(args, string);
-    while (string != '\0')
-    {
-       if (string[i] == '%')
-       {
-              i++;
-              ft_printfcheck(string[i], &args, &len, &i);
-              i++;              
-       }
-       else
-       {
-              ft_putchar((char)string[i], &len);
-              i++;
-       }
-    }
-    va_end(args);
-    return(len);      
+	i = 0;
+	length = 0;
+	va_start(args, string);
+	while (string[i] != '\0')
+	{
+		if (string[i] == '%')
+		{
+			i++;
+			ft_printf_checker(string[i], &args, &length, &i);
+			i++;
+		}
+		else
+		{
+			ft_putcharacter_length((char)string[i], &length);
+			i++;
+		}
+	}
+	va_end(args);
+	return (length);
 }
 
 #include "ft_printf.h"
