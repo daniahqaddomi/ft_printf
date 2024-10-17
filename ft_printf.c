@@ -48,12 +48,12 @@ int	ft_printf(const char *string, ...)
 		if (string[i] == '%')
 		{
 			i++;
-			ft_printf_checker(string[i], &args, &length, &i);
+			ft_printcheck(string[i], &args, &length, &i);
 			i++;
 		}
 		else
 		{
-			ft_putcharacter_length((char)string[i], &length);
+			ft_putcharacter((char)string[i], &length);
 			i++;
 		}
 	}
