@@ -61,13 +61,7 @@ int	ft_printf(const char *string, ...)
 	return (length);
 }
 
-#include "ft_printf.h"
 
-int	printf_char(int c)
-{
-	ft_putchar_fd(c, 1);
-	return (1);
-}
 #include "ft_printf.h"
 
 int	print_char(char c)
@@ -75,10 +69,11 @@ int	print_char(char c)
 	ft_putchar_fd(c, 1);
 	return (1);
 }
+
 void ft_putstr(char *str)
 {
-    if (str == NULL) // Check for NULL
-        return; // Or handle accordingly, e.g., write a default message.
+    if (str == NULL) 
+        return; 
     int i = 0;
     while (str[i])
     {
@@ -92,7 +87,7 @@ int ft_printstr(char *str)
     if (str == NULL)
     {
         ft_putstr("(null)");
-        return (6); // Returning the length of "(null)"
+        return (6); 
     }
     int i = 0;
     while (str[i])
@@ -100,5 +95,50 @@ int ft_printstr(char *str)
         write(1, &str[i], 1);
         i++;
     }
-    return (i); // Return the length of the string
+    return (i); 
 }
+
+#include <stdarg.h>
+#include <unistd.h>
+
+int ft_putchar(char c) {
+    return write(1, &c, 1);
+}
+
+int ft_putstr(char *str) {
+    int len = 0;
+    while (str[len]) {
+        ft_putchar(str[len]);
+        len++;
+    }
+    return len;
+}
+
+int ft_printf(const char *format, ...) {
+    va_list args;
+    int i = 0;
+    int printed_chars = 0;
+
+    va_start(args, format); 
+
+    while (format[i]) {
+        if (format[i] == '%' && format[i + 1] == 's') {
+            char *str = va_arg(args, char *);
+            printed_chars += ft_putstr(str);
+            i += 2; 
+        } else {
+            ft_putchar(format[i]);
+            printed_chars++;
+            i++;
+        }
+    }
+
+    va_end(args);
+    return printed_chars;
+}
+
+int main() {
+    ft_printf("Hello, %s!\n", "42");
+    return 0;
+}
+
