@@ -35,11 +35,6 @@ static void ft_printfcheck(char c, va_list *args, int *i)
 		 (*i)--;
 }
 
-int	ft_putchar(int c)
-{
-	return(write(1, &c, 1));
-}
-
 
 int ft_printf(const char *string, ...)
 {
