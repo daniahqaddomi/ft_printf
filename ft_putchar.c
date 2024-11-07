@@ -96,3 +96,52 @@ int ft_printfcheck(char c, va_list *args) {
         return ft_putchar('%');
     return 0;
 }
+int ft_putnumber (int num)
+{
+       char   digit;
+       int    i;
+
+       i = 0;
+       if (num < 0)
+       {
+              write(1, "-", 1);
+              i++;
+              num = -num;
+       }
+       if (num == 0)
+       {
+              write(1, "0", 1);
+              return (1);
+       }
+
+       if (num >= 10)
+       {
+              i += ft_putnumber(num / 10);
+       }
+        digit = '0' + (num % 10);
+        write(1, &digit, 1);
+        i++;
+        return (i);
+}
+
+int ft_putnumber(int num)
+{
+       int    count;
+
+       count = 0;
+       if(num == "-2147483648")
+       {
+              return (ft_putstring("-2147483648"));
+       }
+       if (num < 0)
+       {
+              count += ft_putchar('-');
+              num = -num;
+       }
+       if (num >= 10)
+       {
+              count +=ft_putnumber(num / 10);
+       }
+       count +=ft_putchar((num % 10) + '0');
+       return (count);
+ }
