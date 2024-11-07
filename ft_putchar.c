@@ -17,16 +17,6 @@ int	ft_putchar(int c)
 	return(write(1, &c, 1));
 }
 
-
-#include "printf.h"
-#include <unistd.h>
-#include <stdarg.h>
-#include <stddef.h>
-
-int ft_putchar(char c) {
-    return write(1, &c, 1);
-}
-
 int ft_putstring(char *str) {
     int       i;
 
@@ -105,24 +95,4 @@ int ft_printfcheck(char c, va_list *args) {
     else if (c == '%')
         return ft_putchar('%');
     return 0;
-}
-
-// Main ft_printf function
-int ft_printf(const char *string, ...) {
-    va_list args;
-    int i = 0;
-    int char_count = 0;
-
-    va_start(args, string);
-    while (string[i] != '\0') {
-        if (string[i] == '%') {
-            i++;
-            char_count += ft_printfcheck(string[i], &args);
-        } else {
-            char_count += ft_putchar(string[i]);
-        }
-        i++;
-    }
-    va_end(args);
-    return char_count;
 }
