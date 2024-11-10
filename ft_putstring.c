@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstring.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniah <daniah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 06:13:49 by daniah            #+#    #+#             */
-/*   Updated: 2024/11/10 06:29:55 by daniah           ###   ########.fr       */
+/*   Created: 2024/11/10 04:10:47 by daniah            #+#    #+#             */
+/*   Updated: 2024/11/10 06:29:44 by daniah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int ft_putstring(char *str)
 {
-    return (write(1, &c, 1));
+    int      count;
+
+   count = 0;
+   if (str == NULL)
+    {
+       write(1,"(null)",6);
+       return (6);
+    }
+    while (str[count] != '\0')
+    {
+       ft_putchar(str[count]);
+      count++;
+    }
+    return(count);
 }
+
+// int main ()
+// {
+//     char *d = "dfsd 5 ^ g~";
+//     printf("%s",d);
+//     return 0;
+// }
+

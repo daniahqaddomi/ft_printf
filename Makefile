@@ -1,35 +1,35 @@
-NAME	= libftprintf.a
+NAME    = libftprintf.a
 
-FILES	= ft_printf	\
+FILES   = ft_printf \
+          ft_putchar \
+          ft_putstring \
+          ft_putnumber \
+          ft_put_unsigned_number \
+          ft_put_hexadecimal \
+          ft_hexadecimal_digit \
+          ft_putpointer
 
-# LIBFT_DIR = libft
-CFILES = $(FILES:%=%.c)
-OFILES	= $(FILES:%=%.o)
+CFILES  = $(FILES:%=%.c)
+OFILES  = $(FILES:%=%.o)
 
-CC	= cc
-
-RM	= rm -f
-
-CFLAGS	= -Wall -Wextra -Werror
+CC      = cc
+RM      = rm -f
+CFLAGS  = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-# buildft: $(LIBFT_DIR)
-# 	make -C $(LIBFT_DIR)
-
-$(NAME):	$(OFILES)
-			ar rcs $(NAME) $(OFILES) libft/libft.a
-			
+$(NAME): $(OFILES)
+	ar rcs $(NAME) $(OFILES)
+	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			$(RM) $(OFILES)
+	$(RM) $(OFILES)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 
-re:			fclean all
- 
-# .PHONY:		all clean fclean re buildft
+re: fclean all
 
+.PHONY: all clean fclean re

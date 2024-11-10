@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dqaddomi <dqaddomi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniah <daniah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:32:31 by dqaddomi          #+#    #+#             */
-/*   Updated: 2024/09/22 17:48:23 by dqaddomi         ###   ########.fr       */
+/*   Updated: 2024/11/10 06:28:42 by daniah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -20,5 +20,13 @@
 # include <stdarg.h>
 
 int ft_printf(const char *, ...);
+int ft_putchar(char c);
+int ft_putstring(char *str);
+int ft_putnumber (int num);
+int ft_put_unsigned_number (unsigned int num);
+int ft_put_hexadecimal(unsigned int num, int lower);
+int ft_hexadecimal_digit(unsigned int digit, int lowercase);
+int ft_putpointer(void *ptr);
+
 
 #endif
